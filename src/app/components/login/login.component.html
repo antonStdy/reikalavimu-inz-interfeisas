@@ -1,0 +1,21 @@
+<div class="login-component">
+  <form [formGroup]="loginForm" class="login-form" (ngSubmit)="onSubmit()" ngNativeValidate>
+    <div class="form-control">
+    <mat-form-field class="example-full-width">
+      <mat-label>Login</mat-label>
+      <input matInput formControlName="username" type="text" required>
+    </mat-form-field>
+    </div>
+
+    <div class="form-control">
+    <mat-form-field class="example-full-width">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" required>
+    </mat-form-field>
+    </div>
+
+    <div class="form-control">
+    <button type="submit" [disabled]="loginForm.invalid" mat-button>Sign up</button>
+    </div>
+</form>
+</div>
