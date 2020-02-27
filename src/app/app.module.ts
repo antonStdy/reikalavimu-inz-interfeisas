@@ -9,10 +9,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { LoginComponent } from './components/login/login.component';
 import { ClientComponent } from './components/client/client.component';
 import { WorkerComponent } from './components/worker/worker.component';
+import { OrderDialogComponent } from './components/client/components/order-dialog/order-dialog.component';
 
 
 @NgModule({
-  imports: [ 
+  imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
@@ -23,7 +24,8 @@ import { WorkerComponent } from './components/worker/worker.component';
  providers: [
    CookieService
  ],
-  declarations: [ AppComponent, LoginComponent, ClientComponent, WorkerComponent ],
+  declarations: [ AppComponent, LoginComponent, ClientComponent, WorkerComponent, OrderDialogComponent ],
+  entryComponents: [OrderDialogComponent],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

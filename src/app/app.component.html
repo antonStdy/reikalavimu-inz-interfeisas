@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+<mat-toolbar>
+    <span>
+        Pervėžimas
+    </span>
+
+    <span *ngIf="dataBaseService.isLoggedIn()" style="margin-left: auto;">
+        <button mat-button (click)="dataBaseService.logOut()">Atsijungti</button>
+    </span>
+</mat-toolbar>
+
+<div class="p-l-r-50">
+    <router-outlet></router-outlet>
+</div>

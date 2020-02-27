@@ -1,3 +1,78 @@
-<p>
-  client works!
-</p>
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Užsakyti prekę">
+    <table mat-table [dataSource]="existingItems" class="mat-elevation-z8 w-100">
+    
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Pavadinimas </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Aprašymas </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef> Sandėlyje </th>
+        <td mat-cell *matCellDef="let element"> 
+          <div *ngIf="element.amount; else notExist" style="color: green;">
+            Yra
+          </div>
+          <ng-template #notExist>
+            <div style="color: red;">
+              Nėra
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="place">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button [disabled]="!element.amount" mat-button (click)="openOrderDialog(element)">Užsakyti</button>
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+    </table>
+  </mat-tab>
+
+  <mat-tab label="Atšaukti užsakymą">
+    <table mat-table [dataSource]="orderedItems" class="mat-elevation-z8 w-100">
+  
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Pavadinimas </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Aprašymas </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+    
+
+      <ng-container matColumnDef="place">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-button (click)="cancelOrder(element)">Atšaukti užsakymą</button>
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+    </table>
+  </mat-tab>
+
+  <mat-tab label="Palitki atsiliepimą">
+    <div style="text-align: center; margin-top: 150px;">
+      <mat-form-field style="width: 500px;">
+        <mat-label>Parašikyte atsiliepimą</mat-label>
+        <textarea matInput [(ngModel)]="atsiliepimas" style="width: 500px;"></textarea>
+      </mat-form-field>
+      <div>
+        <button mat-button [disabled]="!atsiliepimas" (click)="sendAtsiliepimas()">Send</button>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>
