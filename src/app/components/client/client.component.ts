@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageItem } from 'src/app/shared/models/interfaces.model';
-import { DataBaseService } from 'src/app/shared/services/data-base.service';
+import { StorageItem } from '../../shared/models/interfaces.model';
+import { DataBaseService } from '../../shared/services/data-base.service';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderDialogComponent } from './components/order-dialog/order-dialog.component';
 

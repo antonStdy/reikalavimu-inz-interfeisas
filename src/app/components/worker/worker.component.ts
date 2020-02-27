@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataBaseService } from 'src/app/shared/services/data-base.service';
+import { DataBaseService } from '../../shared/services/data-base.service';
 
 interface StorageItem {
   name: string;
